@@ -1,4 +1,5 @@
 import './style.css';
-// import { setupCounter } from './counter.js'
+import App from './components/App';
 
-// document.querySelector('#app')
+const app = new App();
+app.init();
