@@ -18,6 +18,11 @@
   margin: 10px 0 30px 0;
 }
 
+.input-block {
+  display: flex;
+  justify-content: space-around;
+}
+
 .settings {
   display: flex;
   justify-content: space-around;
@@ -30,9 +35,38 @@
   display: flex;
   gap: 7px;
   flex-direction: column;
-  height: 50px;
+}
+
+.list-element {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+p {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.complited p {
+  text-decoration: line-through;
 }
 
 .complited-list {
   border-top: 1px solid black;
+}
+
+.complete-btn {
+}
+
+.complited .complete-btn {
+  display: none;
+}
+
+.even {
+  background-color: aquamarine;
+}
+
+.odd {
+  background-color: blueviolet;
 }
