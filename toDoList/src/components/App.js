@@ -2,8 +2,8 @@ import listElement from './listElement';
 import removeClasses from '../utils/removeClasses';
 
 class App {
-  _uncomplitedList;
-  _complitedList;
+  _uncompletedList;
+  _completedList;
   _root;
   _elementCount;
   _elementList;
@@ -31,13 +31,13 @@ class App {
       this._elementCount++;
 
       const element = new listElement(text, this._elementCount);
-      this._uncomplitedList.append(element.getElement());
+      this._uncompletedList.append(element.getElement());
       localStorage.setItem(this._elementCount, JSON.stringify([text, 1]));
     };
     const setEven = () => {
       this._elementList = document.querySelectorAll('.list-element');
       for (let i = 0; i < this._elementList.length; i++) {
-        if (i % 2 === 0) {
+        if (i % 2 !== 0) {
           this._elementList[i].classList.toggle('even');
         }
       }
@@ -45,7 +45,7 @@ class App {
     const setOdd = () => {
       this._elementList = document.querySelectorAll('.list-element');
       for (let i = 0; i < this._elementList.length; i++) {
-        if (i % 2 !== 0) {
+        if (i % 2 === 0) {
           this._elementList[i].classList.toggle('odd');
         }
       }
@@ -93,11 +93,11 @@ class App {
       createButton('Delete last', deleteLast)
     );
 
-    this._uncomplitedList = document.createElement('ul');
-    this._uncomplitedList.classList.add('element-list');
+    this._uncompletedList = document.createElement('ul');
+    this._uncompletedList.classList.add('element-list');
 
-    this._complitedList = document.createElement('ul');
-    this._complitedList.classList.add('element-list', 'complited-list');
+    this._completedList = document.createElement('ul');
+    this._completedList.classList.add('element-list', 'completed-list');
 
     const keys = Object.keys(localStorage).sort((a, b) => a - b);
     for (let key of keys) {
@@ -106,14 +106,14 @@ class App {
       const element = new listElement(text, key).getElement();
 
       if (index === 1) {
-        this._uncomplitedList.append(element);
+        this._uncompletedList.append(element);
       } else {
-        element.classList.add('complited');
-        this._complitedList.append(element);
+        element.classList.add('completed');
+        this._completedList.append(element);
       }
     }
 
-    this._root.append(header, inputBlock, settings, this._uncomplitedList, this._complitedList);
+    this._root.append(header, inputBlock, settings, this._uncompletedList, this._completedList);
 
     function createButton(name, event) {
       const button = document.createElement('button');

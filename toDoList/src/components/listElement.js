@@ -14,9 +14,9 @@ class listElement {
     const setComplete = () => {
       removeClasses();
 
-      this._element.classList.add('complited');
-      const complitedList = document.querySelector('.complited-list');
-      complitedList.append(this._element);
+      this._element.classList.add('completed');
+      const completedList = document.querySelector('.completed-list');
+      completedList.append(this._element);
       localStorage.setItem(this.id, JSON.stringify([text, 2]));
     };
     const setDeleted = () => {
@@ -26,9 +26,10 @@ class listElement {
       localStorage.removeItem(this.id);
     };
 
-    const compliteButton = this.createButton('complete', setComplete);
+    const compliteButton = this.createButton('', setComplete);
     compliteButton.classList.add('complete-btn');
-    const deleteButton = this.createButton('delete', setDeleted);
+    const deleteButton = this.createButton('', setDeleted);
+    deleteButton.classList.add('delete-btn');
 
     this._element.append(compliteButton, p, deleteButton);
   }
